@@ -66,7 +66,7 @@ footerPrint();
 function loginFormPrint(){
 	print '	<h3>Login</h3>
 	  <form action="#" method="post">
-		Password: <input type="password" name="password"><br>
+		Password: <input type="password" name="password" required><br>
 	  <input type="submit" value="Login!" />
 	</form>
 	';
@@ -75,11 +75,11 @@ function loginFormPrint(){
 
 function footerPrint(){
 
-print '<br><br><hr><div style ="0.5em">';
+print '<br><br><hr>';
 	if(\Sesher\check()){
 		print '<a href="?logout=true">Logout</a> | ' ;
 	}
-	print '<a href="https://github.com/aaviator42">@aaviator42</a></div>';
+	print '<a href="https://github.com/aaviator42">@aaviator42</a>';
 }
 
 ?>
