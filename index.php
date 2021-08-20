@@ -1,6 +1,6 @@
 <?php
 /*
-Sample login system in PHP to demonstrate Sesher usage
+Simple login system in PHP to demonstrate Sesher usage
 AGPLv3
 
 @aaviator42
@@ -10,7 +10,9 @@ AGPLv3
 require 'Sesher.php';
 session_start();
 
-$password = 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f';
+//BCRYPT password hash generated with password_hash()
+//default: password1234
+$hashedPassword = '$2y$10$sV9cOUot6w3y3eivMrTmq.O/NteebWDY5tY7rx9wSJoEMXZTxjO8u';
 
 
 //logout if request made to ?logout=true
@@ -23,7 +25,7 @@ if(isset($_GET["logout"]) && $_GET["logout"]){
 //if form submitted, check if password correct
 if(!\Sesher\check()){
 	if(isset($_POST["password"])){
-		if(hash('sha256', $_POST['password']) === $password){
+		if(password_verify($_POST['password'], $hashedPassword)){
 			//password is correct!	
 			\Sesher\start();
 		} else {
@@ -42,12 +44,15 @@ if(!\Sesher\check()){
 	<style>
 	body {
 		font-family: monospace;
+		max-width: 50rem;
+		padding: 2rem;
+		margin: auto;
 	}
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-	<meta name="robots" content="noindex,nofollow">
-
+	<meta name="robots" content="noindex, nofollow, noarchive">
 </head>
+
 <body>
 <h2>Simple Login Page</h2>
 
@@ -79,9 +84,10 @@ print '<br><br><hr>';
 	if(\Sesher\check()){
 		print '<a href="?logout=true">Logout</a> | ' ;
 	}
-	print '<a href="https://github.com/aaviator42">@aaviator42</a>';
+	print '<a href="https://github.com/aaviator42/simple-login">Help/Source</a>';
 }
 
 ?>
+
 </body>
 </html>
