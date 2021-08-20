@@ -80,11 +80,11 @@ function loginFormPrint(){
 
 function footerPrint(){
 
-print '<br><br><hr>';
+print '<br><br><hr><small>';
 	if(\Sesher\check()){
 		print '<a href="?logout=true">Logout</a> | ' ;
 	}
-	print '<a href="https://github.com/aaviator42/simple-login">Help/Source</a>';
+	print '<a href="https://github.com/aaviator42/simple-login">Help/Source</a></small>';
 }
 
 ?>
